@@ -433,7 +433,8 @@ const NSUInteger kReloadDelay = 10;
 
 - (void) openDroplet:(BTOceanDataDroplet*)droplet onPort:(NSNumber*)port {
     NSString* portString = (port.integerValue == 80 ? @"" : $p(@":%@", port));
-    NSString *urlString = $p(@"http://%@%@", droplet.ipAddress, portString);
+//    NSString *urlString = $p(@"http://%@%@", droplet.ipAddress, portString);
+    NSString *urlString = $p(@"https://cloud.digitalocean.com/droplets/%@", droplet.identifier);
     [[NSWorkspace sharedWorkspace]
      openURL:[NSURL URLWithString:urlString]];
 }
