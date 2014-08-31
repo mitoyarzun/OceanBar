@@ -102,6 +102,10 @@ const NSUInteger kReloadDelay = 10;
 }
 
 - (void) setupStatusbarItemWithDroplets:(NSArray*)droplets {
+    NSArray *sortedDroplets = [droplets sortedArrayUsingComparator:^NSComparisonResult(BTOceanDataDroplet *obj1, BTOceanDataDroplet *obj2) {
+        return [obj1.name compare:obj2.name];
+    }];
+    droplets = sortedDroplets;
     if (!self.mainStatusbarItem) {
         self.mainStatusbarItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
         [self.mainStatusbarItem setEnabled: YES];
